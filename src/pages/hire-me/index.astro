@@ -8,23 +8,45 @@ import { resolvePath } from "@lib/utils";
 const linkedInContact = CONTACT.find((contact) => contact.type === "LinkedIn");
 ---
 
-<RootPageIndex title="Hire me" searchable>
-  <div class="animate mb-4">
-    <p class="mb-1">The PDF resume:</p>
+<RootPageIndex title="Currently Available for New Opportunities" searchable>
+  <div class="animate mb-8">
+    <p class="pb-6">I'm seeking full-time positions and consulting engagements where I can 
+      leverage my 10+ years of experience in software engineering and technical 
+      leadership. With a background spanning enterprise organizations and startups, 
+      I offer expertise in:</p>
+
+    <div class="pb-8 space-y-6">
+      <ul class="space-y-6">
+        <li class="border-l-4 border-blue-500 pl-2">
+          <strong>Fractional CTO/Technical Leadership</strong>
+          <span class="pl-2">• Strategic technical direction and team leadership</span>
+        </li>
+        <li class="border-l-4 border-blue-500 pl-2">
+          <strong>Software Architecture & Development</strong>
+          <span class="pl-2">• Full-stack development, technical architecture, developer &amp; CI/CD tooling</span>
+        </li>
+        <li class="border-l-4 border-blue-500 pl-2">
+          <strong>Engineering Team Building</strong>
+          <span class="pl-2">• Mentoring junior developers, establishing development workflows</span>
+        </li>
+        <li class="border-l-4 border-blue-500 pl-2">
+          <strong>Technical Project Management</strong>
+          <span class="pl-2">• Leading complex migrations and system implementations</span>
+        </li>
+        <li class="border-l-4 border-blue-500 pl-2">
+          <strong>Stakeholder Management</strong>
+          <span class="pl-2">• Bridging technical teams and business requirements</span>
+        </li>
+      </ul>
+    </div>
+
+    <p class="pt-8">Please reach out via email at [mike.hj.rice@gmail.com] to discuss how I can help your organization.</p>
+    
+    <p class="mt-8">Resume:</p>
     <section>
       <ArrowCardButton
-        href={resolvePath("/hire-me/milidev_resume.pdf", Astro.url.pathname)}
+        href={resolvePath("/hire-me/resume.pdf", Astro.url.pathname)}
         text="Download PDF"
-        openInNewTab
-      />
-    </section>
-  </div>
-  <div class="animate mb-4">
-    <p class="mb-1">The TXT resume:</p>
-    <section>
-      <ArrowCardButton
-        href={resolvePath("/hire-me/milidev_resume.txt", Astro.url.pathname)}
-        text="Download TXT"
         openInNewTab
       />
     </section>

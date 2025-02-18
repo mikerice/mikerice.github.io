@@ -1,0 +1,14 @@
+---
+interface LogoProps {
+  title?: string;
+}
+
+const { title = "mike rice" } = Astro.props as LogoProps;
+---
+
+<div class="flex items-center gap-2">
+  <div class="flex items-center justify-center w-10 h-8 bg-gray-800 rounded [background-image:radial-gradient(#ffffff40_1px,transparent_1px)] [background-size:4px_4px]">
+    <span class="font-mono text-xl text-white">MR</span>
+  </div>
+  <span class="font-mono text-xl">{title}</span>
+</div>

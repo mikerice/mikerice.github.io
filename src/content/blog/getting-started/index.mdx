@@ -1,15 +1,16 @@
 ---
 title: "Getting started"
 date: "2025-01-05"
+draft: true
 tags:
   - guide
 ---
 
 ---
 
-## Get Astro Milidev
+## Get Astro MR
 
-Clone the [Astro Milidev repository](https://github.com/bartoszlenar/astro-milidev.git).
+Clone the [Astro MR repository](https://github.com/bartoszlenar/astro-milidev.git).
 
 ```sh
 git clone https://github.com/bartoszlenar/astro-milidev.git my-astro-milidev
@@ -64,7 +65,7 @@ Start with `GLOBAL` variable:
 // src/consts.ts
 
 export const GLOBAL: GlobalSite = {
-  title: "Astro Milidev",
+  title: "Astro MR",
   description: "a minimalistic blog+portfolio Astro theme",
   author: "John Doe",
   authorPhotoSrc: "/johndoe.png",
@@ -100,7 +101,7 @@ export const HOME: HomeSite = {
 
 ### Collections site
 
-By default, there are three collections in Astro Milidev: blog, projects, and talks.
+By default, there are three collections in Astro MR: blog, projects, and talks.
 
 ```ts
 export const BLOG: BlogSite = {
@@ -190,7 +191,7 @@ export default defineConfig({
 
 ## Deploy the site
 
-Astro Milidev already contains a github workflow that will deploy the page to Github Pages: `.github/workflows/deploy.yml`. The workflow is taken from the (official guide)[https://docs.astro.build/en/guides/deploy/github/].
+Astro MR already contains a github workflow that will deploy the page to Github Pages: `.github/workflows/deploy.yml`. The workflow is taken from the (official guide)[https://docs.astro.build/en/guides/deploy/github/].
 
 For manual deployment instructions and other deployment options, see [Astro's docs](https://docs.astro.build/en/guides/deploy/).
 
@@ -238,16 +239,16 @@ More: [Collections guide](../collections-guide)
 
 ### Pages
 
-Pages are in `src/pages` directory. By default Astro Milidev contains `resume` and `contact`.
+Pages are in `src/pages` directory. By default Astro MR contains `resume` and `contact`.
 
 ### Content
 
-Astro Milidev uses markdown syntax (with MDX support) for the content.
+Astro MR uses markdown syntax (with MDX support) for the content.
 
 More: [Content and syntax guide](../content-and-syntax-guide)
 
-## Extending Astro Milidev
+## Extending Astro MR
 
-Astro Milidev is based on [Astro Micro](https://github.com/trevortylerlee/astro-micro) and [Astro Nano](https://github.com/markhorn-dev/astro-nano).
+Astro MR is based on [Astro Micro](https://github.com/trevortylerlee/astro-micro) and [Astro Nano](https://github.com/markhorn-dev/astro-nano).
 
-The changes are described in this post: [Everything new in Astro Milidev](../everything-new-in-astro-milidev).
+The changes are described in this post: [Everything new in Astro MR](../everything-new-in-astro-milidev).

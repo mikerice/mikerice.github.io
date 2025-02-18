@@ -1,35 +1,22 @@
-# Astro Milidev
+## Scripts
 
-![Astro Milidev Banner](./public/projects/astro-milidev/astro-milidev-banner.png)
+The following scripts are available in the `package.json` file:
 
-<div style="text-align: center;">
+- `dev`: Starts the development server.
+- `build`: Builds the project for production.
+- `preview`: Previews the production build locally.
+- `astro`: Runs Astro commands.
 
-  **[DEMO / LIVE PREVIEW](https://bartoszlenar.github.io/astro-milidev)**
+To run these scripts, use `pnpm run <script-name>`.
 
-</div>
+## My Blog
 
-## Info
+This repository contains the source code for my personal blog. It showcases my projects, blog posts, and other content. Feel free to explore and get inspired!
 
-Astro Milidev is a minimalistic portfolio+blog [Astro](https://astro.build) theme.
+## GitHub Workflow
 
-It originates from [Trevor Lee](https://github.com/trevortylerlee)'s [Astro Micro](https://astro-micro.vercel.app/) theme, which is based on [Mark Horn](https://github.com/markhorn-dev)'s [Astro Nano](https://astro-nano-demo.vercel.app/) (after "nano" and "micro" comes "mili", hence the first part of the name).
+This project uses GitHub Actions for continuous integration and deployment. The workflow files are located in the `.github/workflows` directory. The main workflow includes:
 
-Astro Milidev enhances the above codebases with a variety of features. I customized the original theme for my personal website and also refactored core parts of the code, making it more customizable and extensible. 
-
-The list of modifications is available in this post: [Everything new in Astro Milidev](https://bartoszlenar.github.io/astro-milidev/blog/everything-new-in-astro-milidev/). Another post [Getting started](https://bartoszlenar.github.io/astro-milidev/blog/getting-started/) explains the configuration process step by step. The code is available on [GitHub](https://github.com/bartoszlenar/astro-milidev).
-
-Enjoy!
-
-## Changelog
-
-The current version is v1.1.0
-
-Changelog is available [here](./CHANGELOG.md).
-
-## Contributions
-
-Any PRs are more than welcome. Please direct them to the `develop` branch.
-
-## License
-
-MIT! 
+- Building the project on every push to the `main` branch.
+- Running tests to ensure code quality.
+- Deploying the site to GitHub Pages.

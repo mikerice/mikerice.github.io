@@ -5,7 +5,6 @@ import PageNavigation from "@components/PageNavigation.astro";
 import type { CollectionEntry } from "astro:content";
 import BlogCardButton from "@components/BlogCardButton.astro";
 import ProjectCardButton from "@components/ProjectCardButton.astro";
-import TalkCardButton from "@components/TalkCardButton.astro";
 import { TAGS, type CollectionName } from "@consts";
 import BackToPrevious from "@components/BackToPrevious.astro";
 
@@ -79,14 +78,6 @@ for (const entry of entries) {
                                         <ProjectCardButton
                                             entry={
                                                 entry as CollectionEntry<"projects">
-                                            }
-                                        />
-                                    ) : undefined}
-
-                                    {group.collection === "talks" ? (
-                                        <TalkCardButton
-                                            entry={
-                                                entry as CollectionEntry<"talks">
                                             }
                                         />
                                     ) : undefined}
