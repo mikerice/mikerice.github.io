@@ -1,0 +1,131 @@
+---
+title: "Playwright in Docker: A Pragmatic Approach for Teams"
+date: "2025-03-04"
+lastUpdateDate: "2025-03-04"
+draft: true
+description: "A practical guide to running Playwright in Docker for consistent test environments across teams"
+tags:
+  - testing
+  - docker
+  - playwright
+---
+
+import Callout from "@components/Callout.astro";
+
+---
+
+## The Testing Automation Challenge
+
+It's 2:47 AM, and you're staring at your terminal during an on-call shift. The P1 incident dashboard shows half the end-to-end tests are failing, yet they passed locally on your development machine. In the Slack thread, engineers from the feature team mention they've disabled most of their tests - maintaining them across different environments became too burdensome. Your CI pipeline reports green builds, but only because 40% of the tests are skipped with `// TODO: Fix flaky test` comments.
+
+This is the reality of test automation across teams: different browser versions, inconsistent operating systems, and implementations held together with duct tape. But it doesn't have to be this way. Playwright running in Docker offers a solution that works for organizations of any size - from startups to enterprise teams working across multiple codebases.
+
+Docker provides environment consistency, regardless of who's running the tests or where they're running. Think of it as a portable workspace that includes everything needed to run your tests identically everywhere - the application, its dependencies, the right browser versions, and the test runner itself - all bundled together in a reproducible way.
+
+## Testing Automation in the Real World
+
+Dependency management in testing frameworks often leads to complexity. Here's what many test configurations look like:
+
+```json
+{
+  "dependencies": {
+    "cypress": "^12.1.0",
+    "@cypress/webpack-preprocessor": "^5.12.0",
+    "cypress-visual-regression": "^1.7.0",
+    "@cypress/browserify-preprocessor": "^3.0.2",
+    "cypress-mochawesome-reporter": "^3.3.0",
+    "cypress-multi-reporters": "^1.6.2",
+    "cypress-fail-fast": "^5.0.1",
+    "cypress-xpath": "^2.0.1",
+    "@4tw/cypress-drag-drop": "^2.2.3",
+    "cypress-real-events": "^1.7.6",
+    "@testing-library/cypress": "^9.0.0",
+    "cypress-iframe": "^1.0.1",
+    "@cypress/code-coverage": "^3.10.0",
+    "@cypress/visual-testing-utils": "^2.1.0",
+    "cypress-axe": "^1.4.0",
+    "@cypress/snapshot": "^2.1.7"
+  }
+}
+```
+
+Beyond these direct dependencies, each has its own peer dependencies, configuration files, and browser-specific quirks. The architecture diversity compounds the problem: CI pipelines running on Linux, developers using M1 Macs, and QA environments on Windows make consistent test results nearly impossible.
+
+## Playwright + Docker: Simplicity and Consistency
+
+Playwright's approach is radically different. Your package.json is refreshingly minimal:
+
+```json
+{
+  "dependencies": {
+    "@playwright/test": "^1.50.0"
+  }
+}
+```
+
+Everything needed for robust testing comes built-in. Visual comparisons, complex interactions, HTML reports with videos - no additional plugins required.
+
+Docker provides the environment consistency that resolves cross-platform issues. With the official Playwright Docker image, your team runs the exact same environment with identical browser versions across all machines, regardless of their local operating system or hardware.
+
+<Callout type="info">
+  Once you have Playwright running in Docker, you can enhance your workflow with UI Mode. This feature launches an interactive interface where developers can debug tests with DevTools and observe test execution in real-time. For more details, see the [Playwright documentation](https://playwright.dev/docs/test-ui-mode).
+</Callout>
+
+## Implementation
+
+Now let's set up Playwright in Docker with UI Mode enabled. We'll create a dedicated compose file for local testing, separate from CI configurations.
+
+Create `docker-compose.ui.yml`:
+
+```yaml
+version: '3'
+services:
+  playwright:
+    image: mcr.microsoft.com/playwright:v1.50.0
+    volumes:
+      - .:/app
+    working_dir: /app
+    command: npx playwright test --ui-port=8080 --ui-host=0.0.0.0
+    ports:
+      - "8080:8080"
+```
+
+This configuration:
+1. Uses the official Playwright Docker image with all browsers pre-installed
+2. Mounts your project directory to the container for test access
+3. Exposes the UI mode port for browser access
+
+Add this script to your package.json:
+
+```json
+{
+  "scripts": {
+    "test:ui": "docker compose -f docker-compose.ui.yml up playwright --build"
+  }
+}
+```
+
+Start UI mode with:
+
+```bash
+npm run test:ui
+```
+
+Once running, access the UI Mode interface at `http://localhost:8080` in your browser.
+
+## Benefits for Your Testing Workflow
+
+Running Playwright in Docker delivers several immediate advantages:
+
+- **Consistency**: Everyone runs the same browser versions and dependencies
+- **Simplicity**: For TypeScript and Node.js projects, setup requires minimal configuration
+- **Integration**: Docker containers integrate easily into CI/CD pipelines
+- **Accessibility**: Junior developers can run the same environment as experienced engineers
+
+With UI Mode enabled, you gain additional debugging capabilities that make troubleshooting much more intuitive.
+
+## Conclusion
+
+Playwright in Docker addresses the real-world challenges of test automation by eliminating environment inconsistencies. By embracing this approach, you can reduce environment-specific test failures and focus on writing robust tests instead of debugging configuration issues.
+
+Next time you're faced with the dreaded "works on my machine" scenario, remember that a containerized testing environment might be the solution you need to build confidence in your test suite across your entire organization.
