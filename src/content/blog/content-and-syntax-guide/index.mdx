@@ -1,18 +1,19 @@
 ---
-title: "Content and syntax guide"
-date: "2025-01-01"
+title: 'Content and syntax guide'
+date: '2025-01-01'
 draft: true
 tags:
   - guide
 ---
 
-import Callout from "@components/Callout.astro";
+import Callout from '@components/Callout.astro';
 
 ---
 
 ## Headings
 
-To create headings, use hash symbols (#) followed by a space. The number of hash symbols indicates the heading level.
+To create headings, use hash symbols (#) followed by a space. The number of hash
+symbols indicates the heading level.
 
 <Callout>
   Use `h2` tags instead of `h1` tags in the post. Too many `h1` tags on a single
@@ -71,8 +72,7 @@ I *love* Star Wars.
 My _favourite_ is Episode III – Revenge of the Sith.
 ```
 
-I _love_ Star Wars.
-My _favourite_ is Episode III – Revenge of the Sith.
+I _love_ Star Wars. My _favourite_ is Episode III – Revenge of the Sith.
 
 ---
 
@@ -86,14 +86,14 @@ I **love** Star Wars.
 My __favourite__ is Episode III – Revenge of the Sith.
 ```
 
-I **love** Star Wars.
-My **favourite** is Episode III – Revenge of the Sith.
+I **love** Star Wars. My **favourite** is Episode III – Revenge of the Sith.
 
 ---
 
 ## Italic and Bold
 
-Use three asterisks \(\*\) or underscores \(\_\) to both bold and italicize text.
+Use three asterisks \(\*\) or underscores \(\_\) to both bold and italicize
+text.
 
 {/* prettier-ignore */}
 ```md
@@ -101,14 +101,14 @@ I ***love*** Star Wars.
 My ___favourite___ is Episode III – Revenge of the Sith.
 ```
 
-I **_love_** Star Wars.
-My **_favourite_** is Episode III – Revenge of the Sith.
+I **_love_** Star Wars. My **_favourite_** is Episode III – Revenge of the Sith.
 
 ---
 
 ## Horizontal Rule
 
-Use three hyphens \(\-\), asterisks \(\*\), or underscores \(\_\) to create a horizontal rule.
+Use three hyphens \(\-\), asterisks \(\*\), or underscores \(\_\) to create a
+horizontal rule.
 
 {/* prettier-ignore */}
 ```md
@@ -129,8 +129,8 @@ ___
 
 ## Links
 
-To create a link, the link text in brackets \(\[\]\) and then follow it immediately with the URL in parentheses \(\(\)\).
-
+To create a link, the link text in brackets \(\[\]\) and then follow it
+immediately with the URL in parentheses \(\(\)\).
 
 ### Relative links
 
@@ -153,9 +153,12 @@ And yes, I know `<base>` tag, but setting it breaks other things e.g.: Table of 
 
 ### Links to public files
 
-If you want to link to a file in the public folder, you might experience problems while hosting the site with a base path ( `base` property in the `astro.config.mjs` file).
+If you want to link to a file in the public folder, you might experience
+problems while hosting the site with a base path ( `base` property in the
+`astro.config.mjs` file).
 
-Relative paths work fine with link (they don't with images, [see why](#public-images)):
+Relative paths work fine with link (they don't with images,
+[see why](#public-images)):
 
 ```md
 [Link to public file using relative path](../hire-me/milidev_resume.pdf)
@@ -163,24 +166,30 @@ Relative paths work fine with link (they don't with images, [see why](#public-im
 
 [Link to public file using relative path](../hire-me/milidev_resume.pdf)
 
-You might also use the dedicated component `@components/MdxPublicLink.astro` to link to public files. 
-Start your path with `/` and the final path will be resolved taking your `base` property into account.
+You might also use the dedicated component `@components/MdxPublicLink.astro` to
+link to public files. Start your path with `/` and the final path will be
+resolved taking your `base` property into account.
 
 ```jsx
-import MdxPublicLink from "@components/MdxPublicLink.astro";
+import MdxPublicLink from '@components/MdxPublicLink.astro';
 
-<MdxPublicLink href="/hire-me/milidev_resume.pdf">Link to public file using a dedicated Astro component</MdxPublicLink>
+<MdxPublicLink href="/hire-me/milidev_resume.pdf">
+  Link to public file using a dedicated Astro component
+</MdxPublicLink>;
 ```
 
-import MdxPublicLink from "@components/MdxPublicLink.astro";
+import MdxPublicLink from '@components/MdxPublicLink.astro';
 
-<MdxPublicLink href="/hire-me/milidev_resume.pdf">Link to public file using a dedicated Astro component</MdxPublicLink>
+<MdxPublicLink href="/hire-me/milidev_resume.pdf">
+  Link to public file using a dedicated Astro component
+</MdxPublicLink>
 
 ---
 
 ## Ordered Lists
 
-To create an ordered list, add line items with numbers followed by periods. Use an indent to create a nested list.
+To create an ordered list, add line items with numbers followed by periods. Use
+an indent to create a nested list.
 
 ```md
 1. Item 1
@@ -200,7 +209,9 @@ To create an ordered list, add line items with numbers followed by periods. Use 
 
 ## Unordered List
 
-To create an unordered list, add a hyphen \(\-\), an asterisk \(\*\), or a plus sign \(\+\) in front of line items. Don't mix. Use an indent to create a nested list.
+To create an unordered list, add a hyphen \(\-\), an asterisk \(\*\), or a plus
+sign \(\+\) in front of line items. Don't mix. Use an indent to create a nested
+list.
 
 ```md
 - Item 1
@@ -220,7 +231,8 @@ To create an unordered list, add a hyphen \(\-\), an asterisk \(\*\), or a plus 
 
 ## Images
 
-To add an image, add an exclamation mark (!), followed by alt text in brackets ([]), and the path or URL to the image asset in parentheses.
+To add an image, add an exclamation mark (!), followed by alt text in brackets
+([]), and the path or URL to the image asset in parentheses.
 
 ```md
 ![altText](pathToImage)
@@ -228,7 +240,8 @@ To add an image, add an exclamation mark (!), followed by alt text in brackets (
 
 ### Relative images
 
-Use the `![altText](./image.*)` pattern relative to the same folder as the markdown file. Notice the period.
+Use the `![altText](./image.*)` pattern relative to the same folder as the
+markdown file. Notice the period.
 
 ```md
 ![X-Wing Starfighter](./x-wing.jpeg)
@@ -247,19 +260,21 @@ Use the `![altText](/image.*)` pattern relative to the public folder. No period.
 ![Y-Wing Starfighter](/y-wing.jpeg)
 
 <Callout type="warning">
-  This doesn't work if the website is hosted with a base path (in `astro.config.mjs`).
+  This doesn't work if the website is hosted with a base path (in
+  `astro.config.mjs`).
 </Callout>
 
-If the website is hosted with a base path, import `@components/MdxPublicImage.astro` shared component and provide path relative to the public folder (starting with slash).
+If the website is hosted with a base path, import
+`@components/MdxPublicImage.astro` shared component and provide path relative to
+the public folder (starting with slash).
 
 ```jsx
-import MdxPublicImage from "@components/MdxPublicImage.astro";
+import MdxPublicImage from '@components/MdxPublicImage.astro';
 
-<MdxPublicImage src="/y-wing.jpeg" alt="Y-Wing Starfighter" />
+<MdxPublicImage src="/y-wing.jpeg" alt="Y-Wing Starfighter" />;
 ```
 
-
-import MdxPublicImage from "@components/MdxPublicImage.astro";
+import MdxPublicImage from '@components/MdxPublicImage.astro';
 
 <MdxPublicImage src="/y-wing.jpeg" alt="Y-Wing Starfighter" />
 
@@ -277,7 +292,9 @@ Use the `![altText](url)` pattern.
 
 ## Blockquotes
 
-To add a blockquote add the greater-than character \(\>\) before a paragraph. For multi-line blockquotes, add additional greater-than character for each line and include an empty spacer line.
+To add a blockquote add the greater-than character \(\>\) before a paragraph.
+For multi-line blockquotes, add additional greater-than character for each line
+and include an empty spacer line.
 
 ```md
 > So this is how liberty dies...
@@ -365,7 +382,8 @@ Do or do not. <mark>There is no try.</mark>
 
 ## Task Lists
 
-Combine a list with square brackets ([]) representing a checkbox. Typing `x` inside the brackets marks the task as complete.
+Combine a list with square brackets ([]) representing a checkbox. Typing `x`
+inside the brackets marks the task as complete.
 
 ```md
 - [x] Build a lightsaber
@@ -381,7 +399,9 @@ Combine a list with square brackets ([]) representing a checkbox. Typing `x` ins
 
 ## Tables
 
-Use three or more hyphens (-) for the column headers and use pipes (|) to separate each column. You can align text in the columns to the left, right, or center by adding a colon (:) to the left, right, or on both side of the hyphens.
+Use three or more hyphens (-) for the column headers and use pipes (|) to
+separate each column. You can align text in the columns to the left, right, or
+center by adding a colon (:) to the left, right, or on both side of the hyphens.
 
 ```md
 | Item   | Count |
@@ -401,17 +421,16 @@ Use three or more hyphens (-) for the column headers and use pipes (|) to separa
 
 ## Footnotes
 
-Add a caret (^) and an identifier inside brackets \(\[\^1\]\). Identifiers can be numbers or words but can't contain spaces or tabs.
+Add a caret (^) and an identifier inside brackets \(\[\^1\]\). Identifiers can
+be numbers or words but can't contain spaces or tabs.
 
 ```md
-Here's a footnote, [^1] and here's another one. [^2]
-[^1]: This is the first footnote.
-[^2]: This is the second footnote.
+Here's a footnote, [^1] and here's another one. [^2] [^1]: This is the first
+footnote. [^2]: This is the second footnote.
 ```
 
-Here's a footnote, [^1] and here's another one. [^2]
-[^1]: This is the first footnote.
-[^2]: This is the second footnote.
+Here's a footnote, [^1] and here's another one. [^2] [^1]: This is the first
+footnote. [^2]: This is the second footnote.
 
 See the bottom of this page to view the footnotes.
 
@@ -431,7 +450,10 @@ To denote a word or phrase as code, enclose it in backticks (`).
 
 ## Code Blocks
 
-Denote a code block by wrapping a section of valid code in triple backticks (`). To enable syntax highlighting, type the shorthand symbol for the language after the first three backticks. [Reference for shorthand symbols](https://shiki.style/languages).
+Denote a code block by wrapping a section of valid code in triple backticks (`).
+To enable syntax highlighting, type the shorthand symbol for the language after
+the first three backticks.
+[Reference for shorthand symbols](https://shiki.style/languages).
 
 ````
 ```js
@@ -443,7 +465,7 @@ Denote a code block by wrapping a section of valid code in triple backticks (`).
 
 ```js
 function hello() {
-  console.log("hello world");
+  console.log('hello world');
 }
 ```
 
@@ -451,17 +473,18 @@ function hello() {
 
 ## Conclusion
 
-Refer to [markdownguide.org](https://www.markdownguide.org/) for best practices as well as extended syntax.
+Refer to [markdownguide.org](https://www.markdownguide.org/) for best practices
+as well as extended syntax.
 
 ---
 
-
 ## About MDX
 
-MDX is an extension of Markdown with the ability to import `.astro`,
-`.jsx`, `.tsx` and other framework components you have integrated.
+MDX is an extension of Markdown with the ability to import `.astro`, `.jsx`,
+`.tsx` and other framework components you have integrated.
 
-This guide covers the basics of MDX syntax and how to use it, as well as a few examples.
+This guide covers the basics of MDX syntax and how to use it, as well as a few
+examples.
 
 ### Importing shared components
 
@@ -470,12 +493,12 @@ Importing a component from the `/components` directory.
 This component accepts a Javascript date object and format it as a string.
 
 ```jsx
-import FormattedDate from "@components/FormattedDate.astro";
+import FormattedDate from '@components/FormattedDate.astro';
 
-<FormattedDate date={new Date()} />
+<FormattedDate date={new Date()} />;
 ```
 
-import FormattedDate from "@components/FormattedDate.astro";
+import FormattedDate from '@components/FormattedDate.astro';
 
 <FormattedDate date={new Date()} />
 
@@ -488,12 +511,12 @@ Importing a component from a relative path to your content.
 This component displays an alert when the button is clicked.
 
 ```jsx
-import RelativeComponent from "./component.astro";
+import RelativeComponent from './component.astro';
 
-<RelativeComponent />
+<RelativeComponent />;
 ```
 
-import RelativeComponent from "./component.astro";
+import RelativeComponent from './component.astro';
 
 <RelativeComponent />
 
@@ -501,7 +524,8 @@ import RelativeComponent from "./component.astro";
 
 ### Using frameworks
 
-By default Micro has zero frameworks installed. If you install a framework, components of that framework can be used in MDX files.
+By default Micro has zero frameworks installed. If you install a framework,
+components of that framework can be used in MDX files.
 
 <Callout>
   Don't forget to use [client

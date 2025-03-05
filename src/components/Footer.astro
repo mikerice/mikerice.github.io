@@ -1,8 +1,8 @@
 ---
-import Container from "@components/Container.astro";
-import { GLOBAL } from "@consts";
-import BackToTop from "@components/BackToTop.astro";
-import TextLink from "@components/TextLink.astro";
+import Container from '@components/Container.astro';
+import { GLOBAL } from '@consts';
+import BackToTop from '@components/BackToTop.astro';
+import TextLink from '@components/TextLink.astro';
 ---
 
 <footer class="animate">
@@ -13,10 +13,14 @@ import TextLink from "@components/TextLink.astro";
       </div>
     </div>
     <div class="flex items-center justify-between">
-      <div>{new Date().getFullYear()} | {GLOBAL.author} | <TextLink href="https://astro.build/themes/details/astro-milidev/" external={true}>Forked from Astro Milidev</TextLink></div>
+      <div>
+        {new Date().getFullYear()} | {GLOBAL.author} | <TextLink
+          href="https://astro.build/themes/details/astro-milidev/"
+          external={true}>Forked from Astro Milidev</TextLink
+        >
+      </div>
 
       <div class="flex flex-wrap items-center gap-1.5">
-        
         <button
           id="light-theme-button"
           aria-label="Light theme"

@@ -1,4 +1,4 @@
-export type CollectionName = "blog" | "projects";
+export type CollectionName = 'blog' | 'projects';
 
 export type GlobalSite = {
   title: string;
@@ -12,21 +12,21 @@ export type GlobalSite = {
 };
 
 export const GLOBAL: GlobalSite = {
-  title: "Mike Rice",
-  description: "coding between the mountains and the sea",
-  author: "Mike Rice",
-  authorPhotoSrc: "/mike-headshot.jpg",
+  title: 'Mike Rice',
+  description: 'coding between the mountains and the sea',
+  author: 'Mike Rice',
+  authorPhotoSrc: '/mike-headshot.jpg',
 };
 
-type CollectionSite =  {
+type CollectionSite = {
   pageSize: number;
 };
 
-type HomeSite =  {
+type HomeSite = {
   blogEntries?: number;
   projectEntries?: number;
   talkEntries?: number;
-}
+};
 
 export const HOME: HomeSite = {
   blogEntries: 5,
@@ -38,14 +38,14 @@ type BlogSite = CollectionSite & {
   license: {
     name: string;
     href: string;
-  }
+  };
 };
 
 export const BLOG: BlogSite = {
   pageSize: 20,
   license: {
-    name: "CC BY-NC-ND 4.0",
-    href: "https://creativecommons.org/licenses/by-nc-nd/4.0",
+    name: 'CC BY-NC-ND 4.0',
+    href: 'https://creativecommons.org/licenses/by-nc-nd/4.0',
   },
 };
 
@@ -61,22 +61,22 @@ type ContactInfo = {
   type: string;
   href: string;
   displayAs?: string;
-}
+};
 
-type ContactSite = ContactInfo[]
+type ContactSite = ContactInfo[];
 
 export const CONTACT: ContactSite = [
   {
-    type: "Email",
-    href: "mailto:mike.hj.rice@gmail.com",
-    displayAs: "mike.hj.rice@gmail.com",
+    type: 'Email',
+    href: 'mailto:mike.hj.rice@gmail.com',
+    displayAs: 'mike.hj.rice@gmail.com',
   },
   {
-    type: "GitHub",
-    href: "https://github.com/mikerice",
+    type: 'GitHub',
+    href: 'https://github.com/mikerice',
   },
   {
-    type: "LinkedIn",
-    href: "https://www.linkedin.com/in/mikehjrice/",
+    type: 'LinkedIn',
+    href: 'https://www.linkedin.com/in/mikehjrice/',
   },
 ];

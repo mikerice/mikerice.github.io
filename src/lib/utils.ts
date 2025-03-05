@@ -1,7 +1,7 @@
-import { type CollectionEntry, getCollection } from "astro:content";
-import { clsx, type ClassValue } from "clsx";
-import { twMerge } from "tailwind-merge";
-import type { CollectionName } from "@consts";
+import { type CollectionEntry, getCollection } from 'astro:content';
+import { clsx, type ClassValue } from 'clsx';
+import { twMerge } from 'tailwind-merge';
+import type { CollectionName } from '@consts';
 
 /**
  * Combines class names using clsx and merges Tailwind classes.
@@ -18,7 +18,7 @@ export function cn(...inputs: ClassValue[]) {
  * @returns A formatted date string.
  */
 export function formatDate(date: Date) {
-  return date.toISOString().split("T")[0];
+  return date.toISOString().split('T')[0];
 }
 
 /**
@@ -27,7 +27,7 @@ export function formatDate(date: Date) {
  * @returns A string representing the estimated reading time in minutes.
  */
 export function readingTime(html: string) {
-  const textOnly = html.replace(/<[^>]+>/g, "");
+  const textOnly = html.replace(/<[^>]+>/g, '');
   const wordCount = textOnly.split(/\s+/).length;
   const readingTimeMinutes = (wordCount / 200 + 1).toFixed();
   return `${readingTimeMinutes} min read`;
@@ -41,7 +41,7 @@ export function readingTime(html: string) {
  */
 export function sortByLastUpdateDate<T extends CollectionName>(
   a: CollectionEntry<T>,
-  b: CollectionEntry<T>,
+  b: CollectionEntry<T>
 ) {
   return (
     (b.data.lastUpdateDate ?? b.data.date).getTime() -
@@ -61,9 +61,7 @@ export async function getFilteredCollectionEntries<T extends CollectionName>(
 }> {
   const data = (await getCollection(collectionName))
     .filter((post: CollectionEntry<T>) => !post.data.draft)
-    .sort(
-      sortByLastUpdateDate
-    );
+    .sort(sortByLastUpdateDate);
 
   return { entries: data };
 }
@@ -76,16 +74,14 @@ export async function getFilteredCollectionEntries<T extends CollectionName>(
  */
 export async function getNavigationEntries<T extends CollectionName>(
   collectionName: T,
-  referenceSlug: string | undefined,
+  referenceSlug: string | undefined
 ): Promise<{ nextPost?: CollectionEntry<T>; prevPost?: CollectionEntry<T> }> {
   if (!referenceSlug) {
     return {};
   }
 
   const { entries } = await getFilteredCollectionEntries(collectionName);
-  const currentIndex = entries.findIndex(
-    (entry) => entry.slug === referenceSlug,
-  );
+  const currentIndex = entries.findIndex(entry => entry.slug === referenceSlug);
 
   return {
     nextPost: entries[currentIndex + 1],
@@ -101,10 +97,10 @@ export async function getNavigationEntries<T extends CollectionName>(
  */
 export function resolvePath(href: string | undefined | null, currentPath?: string | undefined) {
   if (!href) {
-    return "";
+    return '';
   }
 
-  if (href.startsWith("http")) {
+  if (href.startsWith('http')) {
     return href;
   }
 
@@ -114,11 +110,11 @@ export function resolvePath(href: string | undefined | null, currentPath?: strin
     return href;
   }
 
-  const base = baseUrl.replace(/\/$/, "");
+  const base = baseUrl.replace(/\/$/, '');
 
-  const resolvedPath = href.startsWith("/")
+  const resolvedPath = href.startsWith('/')
     ? base + href
-    : (currentPath ?? "").replace(/\/$/, "") + "/" + href;
+    : (currentPath ?? '').replace(/\/$/, '') + '/' + href;
 
   return resolvedPath;
 }
@@ -145,13 +141,11 @@ export function formatDateWithLastUpdateDate(date: Date, lastUpdateDate?: Date):
  */
 export async function getAllEntriesWithTags() {
   const entries = [
-    ...(await getFilteredCollectionEntries("blog")).entries,
-    ...(await getFilteredCollectionEntries("projects")).entries,
+    ...(await getFilteredCollectionEntries('blog')).entries,
+    ...(await getFilteredCollectionEntries('projects')).entries,
   ].sort(sortByLastUpdateDate);
 
-  const tags = [
-    ...new Set(entries.flatMap((entry) => entry.data.tags || [])),
-  ].sort();
+  const tags = [...new Set(entries.flatMap(entry => entry.data.tags || []))].sort();
 
-  return { tags, entries }
+  return { tags, entries };
 }

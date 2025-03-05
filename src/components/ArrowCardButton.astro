@@ -14,12 +14,9 @@ const { href, text, textAbove, textBelow, openInNewTab = false } = Astro.props;
   href={href}
   class="not-prose group relative flex flex-nowrap rounded-lg border border-black/15 px-4 py-3 pr-10 transition-colors duration-300 ease-in-out hover:bg-black/5 hover:text-black focus-visible:bg-black/5 focus-visible:text-black dark:border-white/20 dark:hover:bg-white/5 dark:hover:text-white dark:focus-visible:bg-white/5 dark:focus-visible:text-white"
   style="min-height: 70px; text-decoration: none;"
-  {...openInNewTab ? { target: "_blank", rel: "noopener noreferrer" } : {}}
+  {...openInNewTab ? { target: '_blank', rel: 'noopener noreferrer' } : {}}
 >
-  <div
-    class="flex flex-1 flex-col truncate"
-    style="display: flex; justify-content: center;"
-  >
+  <div class="flex flex-1 flex-col truncate" style="display: flex; justify-content: center;">
     {textAbove && <div class="text-xs text-gray-500">{textAbove}</div>}
     <div class="font-semibold">
       {text}

@@ -1,40 +1,40 @@
 ---
-import Container from "@components/Container.astro";
-import TextLink from "@components/TextLink.astro";
-import { getFilteredCollectionEntries, resolvePath } from "@lib/utils";
-import { GLOBAL } from "@consts";
-import Logo from "./Logo.astro";
+import Container from '@components/Container.astro';
+import TextLink from '@components/TextLink.astro';
+import { getFilteredCollectionEntries, resolvePath } from '@lib/utils';
+import { GLOBAL } from '@consts';
+import Logo from './Logo.astro';
 
-const anyBlogPosts =
-  (await getFilteredCollectionEntries("blog")).entries.length > 0;
+const anyBlogPosts = (await getFilteredCollectionEntries('blog')).entries.length > 0;
 
-const anyProjects =
-  (await getFilteredCollectionEntries("projects")).entries.length > 0;
+const anyProjects = (await getFilteredCollectionEntries('projects')).entries.length > 0;
 ---
 
 <header transition:persist>
   <Container>
     <div class="flex flex-wrap justify-between gap-y-2">
-      <TextLink href={resolvePath("/")} underline={false}>
-        {
-          <Logo title={GLOBAL.title} />
-        }
+      <TextLink href={resolvePath('/')} underline={false}>
+        {(<Logo title={GLOBAL.title} />)}
       </TextLink>
-      <nav class="flex items-center gap-4 text-sm font-mono">
-        <TextLink href={resolvePath("/hire-me", Astro.url.pathname)}>for hire</TextLink>
-        {" "}
-        {anyBlogPosts && (
-          <>
-            <span>{`|`}</span>
-            <TextLink href={resolvePath("/blog", Astro.url.pathname)}>blog</TextLink>
-          </>
-        )}
-        {anyProjects && (
-          <>
-            <span>{`|`}</span>
-            <TextLink href={resolvePath("/projects", Astro.url.pathname)}>projects</TextLink>
-          </>
-        )}
+      <nav class="flex items-center gap-4 font-mono text-sm">
+        <TextLink href={resolvePath('/hire-me', Astro.url.pathname)}>for hire</TextLink>
+        {' '}
+        {
+          anyBlogPosts && (
+            <>
+              <span>{`|`}</span>
+              <TextLink href={resolvePath('/blog', Astro.url.pathname)}>blog</TextLink>
+            </>
+          )
+        }
+        {
+          anyProjects && (
+            <>
+              <span>{`|`}</span>
+              <TextLink href={resolvePath('/projects', Astro.url.pathname)}>projects</TextLink>
+            </>
+          )
+        }
       </nav>
     </div>
   </Container>

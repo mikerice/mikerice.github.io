@@ -1,10 +1,10 @@
 ---
-import type { CollectionEntry } from "astro:content";
-import ArrowCardButton from "./ArrowCardButton.astro";
-import { formatDateWithLastUpdateDate, resolvePath } from "@lib/utils";
+import type { CollectionEntry } from 'astro:content';
+import ArrowCardButton from './ArrowCardButton.astro';
+import { formatDateWithLastUpdateDate, resolvePath } from '@lib/utils';
 
 type Props = {
-  entry: CollectionEntry<"blog">;
+  entry: CollectionEntry<'blog'>;
 };
 
 const { entry } = Astro.props;
@@ -12,10 +12,7 @@ const { entry } = Astro.props;
 
 <ArrowCardButton
   href={resolvePath(`/${entry.collection}/${entry.slug}`, Astro.url.pathname)}
-  textAbove={formatDateWithLastUpdateDate(
-    entry.data.date,
-    entry.data.lastUpdateDate,
-  )}
+  textAbove={formatDateWithLastUpdateDate(entry.data.date, entry.data.lastUpdateDate)}
   text={entry.data.title}
   textBelow={entry.data.description}
 />
